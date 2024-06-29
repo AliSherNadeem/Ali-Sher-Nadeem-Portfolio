@@ -2,6 +2,9 @@ import React from "react";
 import TaskEase from "../assets/portfolio/TaskEase_Project.png";
 import DiceGame from "../assets/portfolio/Dice_Game.png";
 import PortfolioProject from "../assets/portfolio/Potfolio_Project.png";
+import FurryFriendFinder from "../assets/portfolio/Furry-Friend-Finder.png";
+import RatingCard from "../assets/portfolio/Interactive_rating_component.png";
+import OrderComponent from "../assets/portfolio/order-summary-card.png";
 
 const Portfolio = () => {
   const portfolios = [
@@ -22,6 +25,24 @@ const Portfolio = () => {
       src: PortfolioProject,
       demo: "http://example.com/demo/portfolio-project", // Replace with the actual URL
       code: "https://github.com/AliSherNadeem/my-portfolio-project",
+    },
+    {
+      id: 4,
+      src: FurryFriendFinder,
+      demo: "#", // Replace with the actual URL
+      code: "#",
+    },
+    {
+      id: 5,
+      src: RatingCard,
+      demo: "http://interactive-rating-component-main-751.vercel.app/", // Replace with the actual URL
+      code: "https://github.com/AliSherNadeem/interactive-rating-component-main",
+    },
+    {
+      id: 6,
+      src: OrderComponent,
+      demo: "http://order-summary-component-main-751.vercel.app/", // Replace with the actual URL
+      code: "https://github.com/AliSherNadeem/order-summary-component-main",
     },
   ];
 
@@ -48,7 +69,7 @@ const Portfolio = () => {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0">
           {portfolios.map(({ id, src, demo, code }) => (
-            <div key={id} className="shadow-md shadow-gray-600 rounded-lg">
+            <div key={id} className="shadow-md shadow-gray-500 rounded-lg">
               <img
                 src={src}
                 alt=""
