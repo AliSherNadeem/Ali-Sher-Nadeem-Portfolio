@@ -84,7 +84,7 @@ const Skills = () => {
   return (
     <div
       name="skills"
-      className="bg-gradient-to-b from-gray-800 to-black w-full min-h-screen py-8 pt-16"
+      className="bg-gradient-to-b from-gray-800 to-black w-full min-h-screen py-8 pt-20 md:pt-8"
     >
       <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full text-white">
         <div className="mb-8">

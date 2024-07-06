@@ -4,15 +4,15 @@ const About = () => {
   return (
     <div
       name="about"
-      className="w-full h-screen bg-gradient-to-b from-gray-800 to-black text-white"
+      className="w-full h-screen bg-gradient-to-b from-gray-800 to-black text-white pt-24 md:pt-8"
     >
       <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full ">
         <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4 border-gray-500 ">
+          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
             About Me
           </p>
         </div>
-        <p className="text-xl mt-14 text-justify ">
+        <p className="text-lg mt-14 px-2 text-gray-300 text-justify md:px-0">
           I am Ali Sher Nadeem, a passionate Software Engineer with a Bachelor's
           degree and a strong focus on Web Development, particularly the MERN
           Stack. My expertise spans a variety of coding languages including
@@ -21,7 +21,7 @@ const About = () => {
         </p>
 
         <br />
-        <p className="text-xl text-justify">
+        <p className="text-lg px-2 text-gray-300 text-justify md:px-0">
           On the back-end, I am proficient in Node.js, Express.js, and PHP, with
           MongoDB as my preferred database. Additionally, I am skilled in Git,
           GitHub, and JIRA for project management. My foundation includes
