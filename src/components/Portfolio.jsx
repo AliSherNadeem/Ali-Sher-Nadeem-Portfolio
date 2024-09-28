@@ -1,10 +1,11 @@
 import React from "react";
 import TaskEase from "../assets/portfolio/TaskEase_Project.png";
+import ContactApp from "../assets/portfolio/contact_app.png";
 import DiceGame from "../assets/portfolio/Dice_Game.png";
-import PortfolioProject from "../assets/portfolio/Potfolio_Project.png";
-import FurryFriendFinder from "../assets/portfolio/Furry-Friend-Finder.png";
-import RatingCard from "../assets/portfolio/Interactive_rating_component.png";
-import OrderComponent from "../assets/portfolio/order-summary-card.png";
+import PortfolioProject from "../assets/portfolio/Ali-Sher-Nadeem-Portfolio.png";
+import AdviceGeneratorApp from "../assets/portfolio/Advice-generator.png";
+// import FurryFriendFinder from "../assets/portfolio/Furry-Friend-Finder.png";
+import RatingCard from "../assets/portfolio/rating_component.png";
 
 const Portfolio = () => {
   const portfolios = [
@@ -16,33 +17,39 @@ const Portfolio = () => {
     },
     {
       id: 2,
+      src: ContactApp,
+      demo: "https://contact-app-using-react-and-firebase.vercel.app/",
+      code: "https://github.com/AliSherNadeem/Contact-App-using-React-and-Firebase",
+    },
+    {
+      id: 3,
       src: DiceGame,
       demo: "https://react-project-3-small-dice-game.vercel.app/",
       code: "https://github.com/AliSherNadeem/React-Project-3-Small-Dice-Game",
     },
     {
-      id: 3,
+      id: 4,
       src: PortfolioProject,
       demo: "http://example.com/demo/portfolio-project", // Replace with the actual URL
       code: "https://github.com/AliSherNadeem/my-portfolio-project",
     },
     {
-      id: 4,
-      src: FurryFriendFinder,
-      demo: "#", // Replace with the actual URL
-      code: "#",
-    },
-    {
       id: 5,
+      src: AdviceGeneratorApp,
+      demo: "https://advice-generator-app-751.vercel.app/",
+      code: "https://github.com/AliSherNadeem/Advice-Generator-App",
+    },
+    // {
+    //   id: 6,
+    //   src: FurryFriendFinder,
+    //   demo: "#", // Replace with the actual URL
+    //   code: "#",
+    // },
+    {
+      id: 7,
       src: RatingCard,
       demo: "http://interactive-rating-component-main-751.vercel.app/", // Replace with the actual URL
       code: "https://github.com/AliSherNadeem/interactive-rating-component-main",
-    },
-    {
-      id: 6,
-      src: OrderComponent,
-      demo: "http://order-summary-component-main-751.vercel.app/", // Replace with the actual URL
-      code: "https://github.com/AliSherNadeem/order-summary-component-main",
     },
   ];
 
