@@ -7,35 +7,33 @@ const Home = () => {
   return (
     <div
       name="home"
-      className="w-full h-screen bg-gradient-to-b from-black via-black to-gray-800 pt-20 md:pt-8"
+      className="w-full min-h-screen bg-gradient-to-b from-black via-black to-gray-800 pt-20"
     >
-      <div
-        className="max-w-screen-lg mx-auto flex flex-col justify-center
-         items-center h-full px-4 md:flex-row"
-      >
-        <div className="flex flex-col justify-center h-full mt-12">
-          <h2 className="text-4xl sm:text-7xl font-bold text-white">
+      <div className="max-w-screen-lg mx-auto flex flex-col md:flex-row justify-center items-center min-h-[calc(100vh-5rem)] px-4">
+        <div className="flex flex-col justify-center text-center md:text-left mt-8 md:mt-0">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
               Hi,
             </span>{" "}
             I'm Ali Sher Nadeem
           </h2>
-          <h4 className="text-xl sm:text-2xl font-bold text-white mt-4">
-            A Software Engineer and MERN Stack Developer.
+          <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white mt-4">
+            Software Engineer and MERN Stack Developer
           </h4>
-          <p className="text-gray-400 py-4 max-w-md">
-            I am a recent Software Engineering graduate with a strong foundation
-            in web development and the MERN Stack.💻 I am passionate about
-            designing and implementing responsive web applications and am
-            actively seeking opportunities to enhance my skills and contribute
-            to innovative projects.
+          <p className="text-gray-400 py-4 max-w-md mx-auto md:mx-0 text-sm sm:text-base">
+            Software Engineer and MERN Stack Developer with over 1 year of
+            experience building responsive, high-quality web applications.
+            Skilled in HTML, CSS, Tailwind CSS, JavaScript, TypeScript, ReactJS,
+            and NextJS with a focus on delivering efficient and user-friendly
+            solutions. Seeking an Associate Developer role to apply my expertise
+            and contribute to impactful projects.
           </p>
           <div>
             <Link
               to="portfolio"
               smooth
               duration={500}
-              className="group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 cursor-pointer"
+              className="group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 cursor-pointer mx-auto md:mx-0"
             >
               Portfolio
               <span className="group-hover:rotate-90 duration-300">
@@ -45,11 +43,11 @@ const Home = () => {
           </div>
         </div>
 
-        <div>
+        <div className="mt-8 md:mt-0">
           <img
             src={myImage}
             alt="my profile"
-            className="mx-auto w-2/3 md:w-full"
+            className="w-40 sm:w-56 md:w-72 mx-auto"
           />
         </div>
       </div>
