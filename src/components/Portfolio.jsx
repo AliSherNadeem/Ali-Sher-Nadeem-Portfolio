@@ -1,53 +1,79 @@
-import React from "react";
-import TaskEase from "../assets/portfolio/TaskEase_Project.png";
+import React, { useState } from "react";
+import DLIG from "../assets/portfolio/DLIG Project.png";
+import Revetment from "../assets/portfolio/Revetment.png";
+import AutoMojo from "../assets/portfolio/Automojo.jpg"
 import ContactApp from "../assets/portfolio/contact_app.png";
-import DiceGame from "../assets/portfolio/Dice_Game.png";
-import PortfolioProject from "../assets/portfolio/Ali-Sher-Nadeem-Portfolio.png";
-import AdviceGeneratorApp from "../assets/portfolio/Advice-generator.png";
-import RatingCard from "../assets/portfolio/rating_component.png";
+import AnalyzeCycle from "../assets/portfolio/Analyze-cycle-frame.png";
+import TradeBreakout from "../assets/portfolio/Trade Breakout.png";
 
 const Portfolio = () => {
-  const portfolios = [
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const projects = [
     {
       id: 1,
-      src: TaskEase,
-      demo: "https://to-do-app-in-react-js.vercel.app/",
-      code: "https://github.com/AliSherNadeem/To-Do-App-in-React-JS",
+      src: DLIG,
+      title: "Digital Library and Information Gateway",
+      company: "Metavystic",
+      duration: "November 2024 - Present",
+      details: [
+        "Built the front-end using React, JavaScript, Mantine UI, and Tailwind CSS, creating a responsive interface for various key modules.",
+        "Implemented modules like admin dashboard, user management, and department management, improving navigation efficiency by 25%.",
+        "Optimized UI components for seamless performance, reducing user-reported issues by 15%.",
+      ],
     },
     {
       id: 2,
-      src: ContactApp,
-      demo: "https://contact-app-using-react-and-firebase.vercel.app/",
-      code: "https://github.com/AliSherNadeem/Contact-App-using-React-and-Firebase",
+      src: AutoMojo,
+      title: "AutoMojo",
+      company: "Freelance",
+      duration: "September 2024 - December 2024",
+      details: [
+        "Developed a responsive front-end using Next.js, TypeScript, Tailwind CSS, and ShadCN, delivering a modern interface 30% faster than industry competitors like Shopmonkey.",
+        "Integrated APIs to enable features like scheduling, inventory tracking, and customer messaging, supporting transactions with 99% uptime.",
+        "Designed intuitive dashboards and workflows for shop owners, cutting task completion time by 20% based on user feedback.",
+      ],
     },
     {
       id: 3,
-      src: DiceGame,
-      demo: "https://react-project-3-small-dice-game.vercel.app/",
-      code: "https://github.com/AliSherNadeem/React-Project-3-Small-Dice-Game",
+      src: Revetment,
+      title: "Revetment",
+      company: "Metavystic",
+      duration: "March 2025 - Present",
+      details: [
+        "Enhanced the UI using Next.js, JavaScript, Tailwind CSS, and Mantine UI, boosting responsiveness across devices.",
+        "Upgraded existing features to enhance performance, reducing user load times by 25% on average.",
+        "Optimized data management systems, cutting processing times by 20% for improved efficiency.",
+      ],
     },
     {
       id: 4,
-      src: PortfolioProject,
-      demo: "http://example.com/demo/portfolio-project",
-      code: "https://github.com/AliSherNadeem/my-portfolio-project",
+      src: AnalyzeCycle,
+      title: "Analyze Cycle Frame",
+      company: "Freelance",
+      duration: "December 2024 - February 2025",
+      details: [
+        "Crafted a dynamic front-end using Next.js, TypeScript, Tailwind CSS, and ShadCN, boosting page load speed by 25% compared to similar platforms.",
+        "Implemented user authentication and interactive dashboards, enabling users to access real-time stock data seamlessly.",
+        "Designed stock detail modules with graphs and charts, improving data visualization clarity by 30% based on user testing.",
+      ],
     },
     {
       id: 5,
-      src: AdviceGeneratorApp,
-      demo: "https://advice-generator-app-751.vercel.app/",
-      code: "https://github.com/AliSherNadeem/Advice-Generator-App",
-    },
-    {
-      id: 6,
-      src: RatingCard,
-      demo: "http://interactive-rating-component-main-751.vercel.app/",
-      code: "https://github.com/AliSherNadeem/interactive-rating-component-main",
+      src: TradeBreakout,
+      title: "Trade Breakout",
+      company: "Freelance",
+      duration: "January 2025 - March 2025",
+      details: [
+        "Developed a sleek front-end using Next.js, TypeScript, Tailwind CSS, and ShadCN, delivering real-time market analysis with 30% faster load times.",
+        "Integrated advanced search and filters, enabling users to pinpoint breakout opportunities with 95% accuracy.",
+        "Designed interactive dashboards with technical indicators and charts, enhancing stock trend visibility by 30% for Malaysian traders.",
+      ],
     },
   ];
 
-  const handleDemoClick = (url) => window.open(url, "_blank");
-  const handleCodeClick = (url) => window.open(url, "_blank");
+  const openModal = (project) => setSelectedProject(project);
+  const closeModal = () => setSelectedProject(null);
 
   return (
     <div
@@ -59,37 +85,73 @@ const Portfolio = () => {
           <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-gray-500">
             My Portfolio
           </p>
-          <p className="py-4 text-sm sm:text-base">
-            Take a look at some of my projects here
-          </p>
+          <p className="py-4 text-sm sm:text-base">Take a look at some of my projects here</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
-          {portfolios.map(({ id, src, demo, code }) => (
-            <div key={id} className="shadow-md shadow-gray-500 rounded-lg">
-              <img
-                src={src}
-                alt=""
-                className="rounded-md duration-200 hover:scale-105 w-full h-40 object-cover"
-              />
-              <div className="flex items-center justify-center">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="shadow-md shadow-gray-500 rounded-lg flex flex-col"
+            >
+              <div className="w-full h-48 overflow-hidden rounded-t-lg">
+                <img
+                  src={project.src}
+                  alt={project.title}
+                  className="w-full h-full object-cover duration-200 hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-col justify-between p-4 flex-grow">
+                <h3 className="text-lg font-semibold text-center mb-2">{project.title}</h3>
                 <button
-                  onClick={() => handleDemoClick(demo)}
-                  className="w-1/2 px-4 py-2 m-2 text-sm sm:text-base duration-200 hover:scale-105"
+                  onClick={() => openModal(project)}
+                  className="w-full px-4 py-2 text-sm sm:text-base bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md hover:scale-105 duration-200"
                 >
-                  Demo
-                </button>
-                <button
-                  onClick={() => handleCodeClick(code)}
-                  className="w-1/2 px-4 py-2 m-2 text-sm sm:text-base duration-200 hover:scale-105"
-                >
-                  Code
+                  Details
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal for Project Details */}
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+          <div
+            className="bg-gray-800 p-6 rounded-lg max-w-lg w-full mx-4 shadow-lg transition-opacity duration-300 ease-in-out opacity-0"
+            style={{ opacity: selectedProject ? 1 : 0 }}
+          >
+            {/* Project Image */}
+            <div className="w-full h-40 overflow-hidden rounded-lg mb-4">
+              <img
+                src={selectedProject.src}
+                alt={selectedProject.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Project Details */}
+            <h3 className="text-2xl font-bold text-white mb-2 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+              {selectedProject.title}
+            </h3>
+            <p className="text-gray-400 mb-4 text-sm sm:text-base">
+              <span className="font-semibold">{selectedProject.company}</span> | {selectedProject.duration}
+            </p>
+            <ul className="text-gray-300 list-disc list-inside mb-6 space-y-1">
+              {selectedProject.details.map((detail, index) => (
+                <li key={index} className="text-sm sm:text-base">{detail}</li>
+              ))}
+            </ul>
+            <button
+              onClick={closeModal}
+              className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md hover:scale-105 duration-200"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
