@@ -42,7 +42,7 @@ const SocialLinks = () => {
           Resume <BsFillPersonLinesFill size={25} />
         </>
       ),
-      href: "./Ali Sher Nadeem Resume.pdf",
+      href: "./Ali Sher Nadeem FrontEnd Resume.pdf",
       style: "rounded-br-md",
       download: true,
     },
