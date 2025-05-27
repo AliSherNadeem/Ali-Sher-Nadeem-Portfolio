@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import DLIG from "../assets/portfolio/DLIG Project.png";
 import Revetment from "../assets/portfolio/Revetment.png";
-import AutoMojo from "../assets/portfolio/Automojo.jpg"
-import ContactApp from "../assets/portfolio/contact_app.png";
+import AutoMojo from "../assets/portfolio/Automojo.jpg";
 import AnalyzeCycle from "../assets/portfolio/Analyze-cycle-frame.png";
 import TradeBreakout from "../assets/portfolio/Trade Breakout.png";
+import Alignography from "../assets/portfolio/Alignography.png";
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showFullImage, setShowFullImage] = useState(false);
 
   const projects = [
     {
@@ -24,6 +25,19 @@ const Portfolio = () => {
     },
     {
       id: 2,
+      src: Alignography,
+      title: "Alignography",
+      company: "Metavystic",
+      duration: "April 2024 - Present",
+      details: [
+        "A modern web application designed to streamline business processes through an intuitive and efficient user interface.",
+        "Developed responsive and scalable UI using Next.js, TypeScript, Tailwind CSS, and Mantine UI, improving development speed by 25% through component reusability.",
+        "Integrate APIs for scheduling, data management, and user interactions, increasing feature delivery speed by 30%.",
+        "Implemented Zustand for state management, reducing global state bugs by 40% and improving performance in complex workflows.",
+      ],
+    },
+    {
+      id: 3,
       src: AutoMojo,
       title: "AutoMojo",
       company: "Freelance",
@@ -35,7 +49,7 @@ const Portfolio = () => {
       ],
     },
     {
-      id: 3,
+      id: 4,
       src: Revetment,
       title: "Revetment",
       company: "Metavystic",
@@ -47,7 +61,7 @@ const Portfolio = () => {
       ],
     },
     {
-      id: 4,
+      id: 5,
       src: AnalyzeCycle,
       title: "Analyze Cycle Frame",
       company: "Freelance",
@@ -59,7 +73,7 @@ const Portfolio = () => {
       ],
     },
     {
-      id: 5,
+      id: 6,
       src: TradeBreakout,
       title: "Trade Breakout",
       company: "Freelance",
@@ -74,6 +88,7 @@ const Portfolio = () => {
 
   const openModal = (project) => setSelectedProject(project);
   const closeModal = () => setSelectedProject(null);
+  const toggleFullImage = () => setShowFullImage(!showFullImage);
 
   return (
     <div
@@ -85,7 +100,9 @@ const Portfolio = () => {
           <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-gray-500">
             My Portfolio
           </p>
-          <p className="py-4 text-sm sm:text-base">Take a look at some of my projects here</p>
+          <p className="py-4 text-sm sm:text-base">
+            Take a look at some of my projects here
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
@@ -102,7 +119,9 @@ const Portfolio = () => {
                 />
               </div>
               <div className="flex flex-col justify-between p-4 flex-grow">
-                <h3 className="text-lg font-semibold text-center mb-2">{project.title}</h3>
+                <h3 className="text-lg font-semibold text-center mb-2">
+                  {project.title}
+                </h3>
                 <button
                   onClick={() => openModal(project)}
                   className="w-full px-4 py-2 text-sm sm:text-base bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md hover:scale-105 duration-200"
@@ -116,19 +135,25 @@ const Portfolio = () => {
       </div>
 
       {/* Modal for Project Details */}
-      {selectedProject && (
+      {selectedProject && !showFullImage && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
           <div
-            className="bg-gray-800 p-6 rounded-lg max-w-lg w-full mx-4 shadow-lg transition-opacity duration-300 ease-in-out opacity-0"
+            className="bg-gray-800 p-6 rounded-lg max-w-2xl w-full mx-4 shadow-lg transition-opacity duration-300 ease-in-out opacity-0"
             style={{ opacity: selectedProject ? 1 : 0 }}
           >
-            {/* Project Image */}
-            <div className="w-full h-40 overflow-hidden rounded-lg mb-4">
+            {/* Project Image with Button Overlay */}
+            <div className="relative w-full h-60 overflow-hidden rounded-lg mb-4">
               <img
                 src={selectedProject.src}
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
               />
+              <button
+                onClick={toggleFullImage}
+                className="absolute bottom-4 right-4 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md hover:scale-105 duration-200 text-sm sm:text-base"
+              >
+                View Full Image
+              </button>
             </div>
 
             {/* Project Details */}
@@ -136,11 +161,14 @@ const Portfolio = () => {
               {selectedProject.title}
             </h3>
             <p className="text-gray-400 mb-4 text-sm sm:text-base">
-              <span className="font-semibold">{selectedProject.company}</span> | {selectedProject.duration}
+              <span className="font-semibold">{selectedProject.company}</span> |{" "}
+              {selectedProject.duration}
             </p>
             <ul className="text-gray-300 list-disc list-inside mb-6 space-y-1">
               {selectedProject.details.map((detail, index) => (
-                <li key={index} className="text-sm sm:text-base">{detail}</li>
+                <li key={index} className="text-sm sm:text-base">
+                  {detail}
+                </li>
               ))}
             </ul>
             <button
@@ -150,6 +178,26 @@ const Portfolio = () => {
               Close
             </button>
           </div>
+        </div>
+      )}
+
+      {/* Full-Screen Image Modal */}
+      {selectedProject && showFullImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 cursor-pointer"
+          onClick={toggleFullImage}
+        >
+          <img
+            src={selectedProject.src}
+            alt={selectedProject.title}
+            className="max-w-[90%] max-h-[90%] object-contain"
+          />
+          <button
+            onClick={toggleFullImage}
+            className="absolute top-4 right-4 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md hover:scale-105 duration-200"
+          >
+            Close
+          </button>
         </div>
       )}
     </div>
