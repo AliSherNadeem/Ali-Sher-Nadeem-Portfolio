@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import DLIG from "../assets/portfolio/DLIG Project.png";
-import Revetment from "../assets/portfolio/Revetment.png";
+// import Revetment from "../assets/portfolio/Revetment.png";
 import AutoMojo from "../assets/portfolio/Automojo.jpg";
 import AnalyzeCycle from "../assets/portfolio/Analyze-cycle-frame.png";
 import TradeBreakout from "../assets/portfolio/Trade Breakout.png";
-import Alignography from "../assets/portfolio/Alignography.png";
+// import Alignography from "../assets/portfolio/Alignography.png";
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -23,21 +23,21 @@ const Portfolio = () => {
         "Optimized UI components for seamless performance, reducing user-reported issues by 15%.",
       ],
     },
+    // {
+    //   id: 2,
+    //   src: Alignography,
+    //   title: "Alignography",
+    //   company: "Metavystic",
+    //   duration: "April 2024 - Present",
+    //   details: [
+    //     "A modern web application designed to streamline business processes through an intuitive and efficient user interface.",
+    //     "Developed responsive and scalable UI using Next.js, TypeScript, Tailwind CSS, and Mantine UI, improving development speed by 25% through component reusability.",
+    //     "Integrate APIs for scheduling, data management, and user interactions, increasing feature delivery speed by 30%.",
+    //     "Implemented Zustand for state management, reducing global state bugs by 40% and improving performance in complex workflows.",
+    //   ],
+    // },
     {
       id: 2,
-      src: Alignography,
-      title: "Alignography",
-      company: "Metavystic",
-      duration: "April 2024 - Present",
-      details: [
-        "A modern web application designed to streamline business processes through an intuitive and efficient user interface.",
-        "Developed responsive and scalable UI using Next.js, TypeScript, Tailwind CSS, and Mantine UI, improving development speed by 25% through component reusability.",
-        "Integrate APIs for scheduling, data management, and user interactions, increasing feature delivery speed by 30%.",
-        "Implemented Zustand for state management, reducing global state bugs by 40% and improving performance in complex workflows.",
-      ],
-    },
-    {
-      id: 3,
       src: AutoMojo,
       title: "AutoMojo",
       company: "Freelance",
@@ -48,20 +48,20 @@ const Portfolio = () => {
         "Designed intuitive dashboards and workflows for shop owners, cutting task completion time by 20% based on user feedback.",
       ],
     },
+    // {
+    //   id: 3,
+    //   src: Revetment,
+    //   title: "Revetment",
+    //   company: "Metavystic",
+    //   duration: "March 2025 - Present",
+    //   details: [
+    //     "Enhanced the UI using Next.js, JavaScript, Tailwind CSS, and Mantine UI, boosting responsiveness across devices.",
+    //     "Upgraded existing features to enhance performance, reducing user load times by 25% on average.",
+    //     "Optimized data management systems, cutting processing times by 20% for improved efficiency.",
+    //   ],
+    // },
     {
-      id: 4,
-      src: Revetment,
-      title: "Revetment",
-      company: "Metavystic",
-      duration: "March 2025 - Present",
-      details: [
-        "Enhanced the UI using Next.js, JavaScript, Tailwind CSS, and Mantine UI, boosting responsiveness across devices.",
-        "Upgraded existing features to enhance performance, reducing user load times by 25% on average.",
-        "Optimized data management systems, cutting processing times by 20% for improved efficiency.",
-      ],
-    },
-    {
-      id: 5,
+      id: 3,
       src: AnalyzeCycle,
       title: "Analyze Cycle Frame",
       company: "Freelance",
@@ -73,7 +73,7 @@ const Portfolio = () => {
       ],
     },
     {
-      id: 6,
+      id: 4,
       src: TradeBreakout,
       title: "Trade Breakout",
       company: "Freelance",
