@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DLIG from "../assets/portfolio/DLIG Project.png";
 // import Revetment from "../assets/portfolio/Revetment.png";
-import AutoMojo from "../assets/portfolio/Automojo.jpg";
+import AutoMojo from "../assets/portfolio/AutoMojo.png";
 import AnalyzeCycle from "../assets/portfolio/Analyze-cycle-frame.png";
 import TradeBreakout from "../assets/portfolio/Trade Breakout.png";
 // import Alignography from "../assets/portfolio/Alignography.png";
