@@ -33,7 +33,7 @@ const NavBar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 400 }}>
           <span className="font-signature text-xl sm:text-2xl bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent cursor-default select-none">
@@ -49,7 +49,7 @@ const NavBar = () => {
               to={to}
               smooth
               duration={500}
-              className="relative px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors duration-200 cursor-pointer rounded-lg hover:bg-white/[0.05] group"
+              className="relative px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200 cursor-pointer rounded-lg hover:bg-white/[0.05] group"
             >
               {label}
               <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-5 transition-all duration-300 rounded-full" />

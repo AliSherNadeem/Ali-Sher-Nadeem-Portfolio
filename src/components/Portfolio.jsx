@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { FiX, FiExternalLink, FiMaximize2 } from "react-icons/fi";
+import BgParticles from "./BgParticles";
 import DLIG from "../assets/portfolio/DLIG Project.png";
 import Revetment from "../assets/portfolio/Revetment.png";
 import AutoMojo from "../assets/portfolio/AutoMojo.png";
@@ -198,22 +199,15 @@ const Portfolio = () => {
   return (
     <section
       name="portfolio"
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#050510] to-[#070716] text-white pt-20 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-[#050510] to-[#070716] text-white pt-16 overflow-hidden"
     >
-      {/* Bg grid */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-600/[0.05] rounded-full blur-[140px] pointer-events-none" />
+      {/* Shared animated background */}
+      <BgParticles gridColor="34,211,238" gridOpacity={0.035} />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-600/[0.05] rounded-full blur-[140px] pointer-events-none animate-orb-3" />
 
       <div
         ref={ref}
-        className="relative max-w-6xl mx-auto px-4 sm:px-6 flex flex-col justify-center min-h-[calc(100vh-5rem)] py-16"
+        className="relative max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-14"
       >
         {/* Header */}
         <motion.div
@@ -225,7 +219,7 @@ const Portfolio = () => {
           <span className="text-cyan-400 text-xs font-semibold tracking-[0.2em] uppercase">
             What I've built
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <h2 className="text-4xl sm:text-5xl font-extrabold mt-2 tracking-tight">
             My{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Portfolio
