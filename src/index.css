@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700;800&family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: "Space Grotesk", "Raleway", sans-serif;
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
     scroll-behavior: smooth;
     color-scheme: dark;
+    font-size: 16px;
   }
 
   body {
@@ -15,12 +16,12 @@
     overflow-x: hidden;
   }
 
-  ::-webkit-scrollbar {
-    width: 5px;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Plus Jakarta Sans", sans-serif;
   }
-  ::-webkit-scrollbar-track {
-    background: #050510;
-  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #050510; }
   ::-webkit-scrollbar-thumb {
     background: rgba(34, 211, 238, 0.25);
     border-radius: 4px;
@@ -34,45 +35,62 @@
   .text-gradient {
     @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent;
   }
-
   .text-gradient-cyan {
     @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
   }
-
   .glass {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.07);
   }
-
-  .glass-hover {
-    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-  }
-
   .glass-hover:hover {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(34, 211, 238, 0.15);
     box-shadow: 0 0 30px rgba(34, 211, 238, 0.06);
   }
-
   .glow-cyan {
     box-shadow: 0 0 24px rgba(34, 211, 238, 0.18), 0 0 48px rgba(34, 211, 238, 0.06);
   }
+}
 
-  .glow-blue {
-    box-shadow: 0 0 24px rgba(59, 130, 246, 0.18), 0 0 48px rgba(59, 130, 246, 0.06);
-  }
+/* Particle float-up animation */
+@keyframes particle-rise {
+  0%   { transform: translateY(0) scale(0.5); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
 
-  .section-grid {
-    background-size: 50px 50px;
-  }
+/* Slow drift for gradient orbs */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0px, 0px); }
+  33%       { transform: translate(80px, -60px); }
+  66%       { transform: translate(-40px, 40px); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0px, 0px); }
+  33%       { transform: translate(-70px, 50px); }
+  66%       { transform: translate(50px, -40px); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0px, 0px); }
+  50%       { transform: translate(40px, 60px); }
+}
+
+/* Grid shimmer */
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.8; }
+}
+
+/* Signature font */
+.font-signature {
+  font-family: "Great Vibes", cursive;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
