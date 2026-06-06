@@ -2,107 +2,108 @@ import React, { useState } from "react";
 import { FaGithub, FaLinkedin, FaShareAlt, FaTimes } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
+import { motion, AnimatePresence } from "framer-motion";
+
+const links = [
+  {
+    id: 1,
+    label: "LinkedIn",
+    icon: FaLinkedin,
+    href: "https://www.linkedin.com/in/ali-sher-nadeem/",
+    color: "#0A66C2",
+    style: "rounded-tr-lg",
+  },
+  {
+    id: 2,
+    label: "GitHub",
+    icon: FaGithub,
+    href: "https://github.com/AliSherNadeem",
+    color: "#ffffff",
+    style: "",
+  },
+  {
+    id: 3,
+    label: "Mail",
+    icon: HiOutlineMail,
+    href: "mailto:ali.thejsdev@gmail.com",
+    color: "#22d3ee",
+    style: "",
+  },
+  {
+    id: 4,
+    label: "Resume",
+    icon: BsFillPersonLinesFill,
+    href: "/Ali Sher Nadeem FrontEnd Resume.pdf",
+    color: "#a855f7",
+    style: "rounded-br-lg",
+    download: true,
+  },
+];
 
 const SocialLinks = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    {
-      id: 1,
-      child: (
-        <>
-          LinkedIn <FaLinkedin size={25} />
-        </>
-      ),
-      href: "https://www.linkedin.com/in/ali-sher-nadeem/",
-      style: "rounded-tr-md",
-    },
-    {
-      id: 2,
-      child: (
-        <>
-          Github <FaGithub size={25} />
-        </>
-      ),
-      href: "https://github.com/AliSherNadeem",
-    },
-    {
-      id: 3,
-      child: (
-        <>
-          Mail <HiOutlineMail size={25} />
-        </>
-      ),
-      href: "mailto:ali.thejsdev@gmail.com",
-    },
-    {
-      id: 4,
-      child: (
-        <>
-          Resume <BsFillPersonLinesFill size={25} />
-        </>
-      ),
-      href: "./Ali Sher Nadeem FrontEnd Resume.pdf",
-      style: "rounded-br-md",
-      download: true,
-    },
-  ];
-
   return (
-    <div className="fixed z-10">
-      <div className="md:hidden fixed top-24 left-4">
+    <div className="fixed z-40">
+      {/* Mobile toggle */}
+      <div className="md:hidden fixed top-[5.5rem] left-4">
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 bg-gray-500 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 transition-opacity duration-300"
+          onClick={() => setIsOpen((v) => !v)}
+          aria-label={isOpen ? "Close social links" : "Open social links"}
+          className="w-9 h-9 rounded-full bg-[#0a0a1a]/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-200 cursor-pointer shadow-lg"
         >
-          {isOpen ? <FaTimes size={16} /> : <FaShareAlt size={16} />}
+          {isOpen ? <FaTimes size={14} /> : <FaShareAlt size={14} />}
         </button>
       </div>
 
-      <div
-        className={`md:hidden fixed top-32 left-0 w-40 transform ${
-          isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
-        } transition-all duration-300 ease-in-out`}
-      >
-        <ul className="flex flex-col">
-          {links.map(({ id, child, href, style, download }) => (
-            <li
-              key={id}
-              className={`flex justify-between items-center w-full h-12 px-4 bg-gray-500 hover:bg-gray-600 hover:rounded-md duration-300 ${style}`}
-            >
-              <a
-                href={href}
-                className="flex justify-between items-center w-full text-white text-sm"
-                download={download}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {child}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Mobile expanded panel */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.22 }}
+            className="md:hidden fixed top-[8rem] left-4"
+          >
+            <ul className="flex flex-col gap-1">
+              {links.map(({ id, label, icon: Icon, href, color, download }) => (
+                <li key={id}>
+                  <a
+                    href={href}
+                    download={download}
+                    target={download ? undefined : "_blank"}
+                    rel="noreferrer"
+                    className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#0a0a1a]/90 backdrop-blur-sm border border-white/10 hover:border-white/20 hover:bg-white/[0.06] transition-all duration-200 shadow-lg"
+                  >
+                    <Icon size={16} color={color} />
+                    <span className="text-xs text-slate-400">{label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <div className="hidden md:flex flex-col fixed top-[35%] left-0">
-        <ul>
-          {links.map(({ id, child, href, style, download }) => (
-            <li
-              key={id}
-              className={`flex justify-between items-center w-40 h-14 px-4 ml-[-100px] hover:ml-[-10px] hover:rounded-md duration-300 bg-gray-500 ${style}`}
-            >
-              <a
-                href={href}
-                className="flex justify-between items-center w-full text-white text-sm sm:text-base"
-                download={download}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {child}
-              </a>
-            </li>
-          ))}
-        </ul>
+      {/* Desktop sidebar slide-out */}
+      <div className="hidden md:flex flex-col fixed top-[38%] left-0 gap-px">
+        {links.map(({ id, label, icon: Icon, href, color, style, download }) => (
+          <a
+            key={id}
+            href={href}
+            download={download}
+            target={download ? undefined : "_blank"}
+            rel="noreferrer"
+            aria-label={label}
+            className={`group flex items-center gap-3 w-36 h-12 pl-4 pr-3 -ml-24 hover:ml-0 transition-all duration-300 ease-out bg-[#0d0d20]/90 backdrop-blur-sm border border-white/[0.07] hover:border-white/[0.15] hover:bg-white/[0.06] ${style} shadow-lg`}
+          >
+            <Icon size={18} color={color} className="flex-shrink-0" />
+            <span className="text-xs font-medium text-slate-400 group-hover:text-white transition-colors duration-200">
+              {label}
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   );
