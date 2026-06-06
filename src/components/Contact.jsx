@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import BgParticles from "./BgParticles";
 import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
@@ -44,23 +45,16 @@ const Contact = () => {
   return (
     <section
       name="contact"
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#050510] to-[#070716] text-white pt-20 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-[#050510] to-[#070716] text-white pt-16 overflow-hidden"
     >
-      {/* Bg */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
-      <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-blue-600/[0.06] rounded-full blur-[140px] pointer-events-none" />
+      {/* Shared animated background */}
+      <BgParticles gridColor="34,211,238" gridOpacity={0.035} />
+      <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-blue-600/[0.06] rounded-full blur-[140px] pointer-events-none animate-orb-2" />
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-purple-600/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
       <div
         ref={ref}
-        className="relative max-w-6xl mx-auto px-4 sm:px-6 flex flex-col justify-center min-h-[calc(100vh-5rem)] py-16"
+        className="relative max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-14"
       >
         {/* Header */}
         <motion.div
@@ -72,7 +66,7 @@ const Contact = () => {
           <span className="text-cyan-400 text-xs font-semibold tracking-[0.2em] uppercase">
             Get in touch
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <h2 className="text-4xl sm:text-5xl font-extrabold mt-2 tracking-tight">
             Let's{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Connect
@@ -216,16 +210,51 @@ const Contact = () => {
       </div>
 
       {/* Footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
+      <motion.footer
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.9 }}
-        className="relative border-t border-white/[0.04] mt-8 py-6 text-center"
+        className="relative border-t border-white/[0.06] mt-8"
       >
-        <p className="text-xs text-slate-700">
-          © {new Date().getFullYear()} Ali Sher Nadeem · Built with React & Tailwind CSS
-        </p>
-      </motion.div>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+          {/* Brand */}
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <span className="text-base font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-tight">
+              Ali Sher Nadeem
+            </span>
+            <span className="text-xs text-slate-600">Full Stack Developer · Islamabad, Pakistan</span>
+          </div>
+
+          {/* Social row */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.linkedin.com/in/ali-sher-nadeem/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/[0.07] hover:border-[#0A66C2]/40 hover:bg-[#0A66C2]/10 transition-all duration-200"
+            >
+              <FaLinkedin size={14} color="#0A66C2" />
+            </a>
+            <a
+              href="https://github.com/AliSherNadeem"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/[0.07] hover:border-white/20 hover:bg-white/[0.07] transition-all duration-200"
+            >
+              <FaGithub size={14} color="#e2e8f0" />
+            </a>
+            <a
+              href="mailto:ali.thejsdev@gmail.com"
+              aria-label="Email"
+              className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/[0.07] hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all duration-200"
+            >
+              <HiOutlineMail size={15} color="#22d3ee" />
+            </a>
+          </div>
+        </div>
+      </motion.footer>
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { FiBriefcase } from "react-icons/fi";
+import BgParticles from "./BgParticles";
 
 const experiences = [
   {
@@ -80,33 +81,32 @@ const colorMap = {
   },
 };
 
+const dotGlow = { cyan: "rgba(34,211,238,0.6)", blue: "rgba(59,130,246,0.6)", purple: "rgba(168,85,247,0.6)" };
+
 const ExperienceCard = ({ exp, index, isInView }) => {
   const c = colorMap[exp.color];
-  const isEven = index % 2 === 0;
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.1 + index * 0.15, ease: "easeOut" }}
-      className="relative flex md:contents"
+      initial={{ opacity: 0, y: 22 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay: 0.1 + index * 0.15, ease: "easeOut" }}
+      className="grid md:grid-cols-[44px_1fr] gap-4 mb-6 last:mb-0"
     >
-      {/* Timeline node (desktop) */}
-      <div className="hidden md:flex flex-col items-center mx-4 flex-shrink-0 w-8">
+      {/* Dot column — desktop only, sits beside the card */}
+      <div className="hidden md:flex justify-center pt-2.5 z-10">
         <div
-          className={`w-4 h-4 rounded-full ${c.dot} shadow-lg ${c.glow} ring-2 ring-white/10 z-10 mt-1 flex-shrink-0`}
+          className={`w-3.5 h-3.5 rounded-full flex-shrink-0 ${c.dot} ring-[3px] ring-[#08081a]`}
+          style={{ boxShadow: `0 0 10px 3px ${dotGlow[exp.color]}` }}
         />
-        {index < experiences.length - 1 && (
-          <div className="w-px flex-1 bg-gradient-to-b from-white/10 to-transparent mt-1" />
-        )}
       </div>
 
       {/* Card */}
       <div
-        className={`mb-8 md:mb-12 flex-1 p-5 sm:p-6 rounded-2xl border bg-white/[0.03] ${c.border} hover:bg-white/[0.05] transition-all duration-300 group`}
+        className={`p-5 sm:p-6 rounded-2xl border bg-white/[0.03] ${c.border} hover:bg-white/[0.05] transition-all duration-300`}
       >
-        {/* Mobile dot */}
-        <div className={`md:hidden w-3 h-3 rounded-full ${c.dot} mb-4`} />
+        {/* Mobile dot — only visible when stacked on small screens */}
+        <div className={`md:hidden w-2.5 h-2.5 rounded-full ${c.dot} mb-3`} />
 
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
           <div>
@@ -134,10 +134,7 @@ const ExperienceCard = ({ exp, index, isInView }) => {
 
         <div className="flex flex-wrap gap-2">
           {exp.tech.map((t) => (
-            <span
-              key={t}
-              className="px-2.5 py-1 text-[10px] font-medium rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-500"
-            >
+            <span key={t} className={`px-2.5 py-1 text-[10px] font-semibold rounded-full border ${c.badge}`}>
               {t}
             </span>
           ))}
@@ -154,22 +151,15 @@ const Experience = () => {
   return (
     <section
       name="experience"
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#070716] to-[#050510] text-white pt-20 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-[#070716] to-[#050510] text-white pt-16 overflow-hidden"
     >
-      {/* Bg decorations */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
+      {/* Shared animated background */}
+      <BgParticles gridColor="59,130,246" gridOpacity={0.04} />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/[0.05] rounded-full blur-[150px] pointer-events-none" />
 
       <div
         ref={ref}
-        className="relative max-w-4xl mx-auto px-4 sm:px-6 flex flex-col justify-center min-h-[calc(100vh-5rem)] py-16"
+        className="relative max-w-5xl mx-auto px-6 sm:px-8 py-10 sm:py-14"
       >
         {/* Header */}
         <motion.div
@@ -182,7 +172,7 @@ const Experience = () => {
             <span className="text-cyan-400 text-xs font-semibold tracking-[0.2em] uppercase">
               My journey
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+            <h2 className="text-4xl sm:text-5xl font-extrabold mt-2 tracking-tight">
               Work{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 Experience
@@ -193,28 +183,47 @@ const Experience = () => {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Vertical line (desktop) */}
-          <div className="hidden md:block absolute left-[calc(2rem)] top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/20 via-blue-500/10 to-transparent" />
+          {/* Vertical connecting line — runs through the center of the 44px dot column */}
+          <div className="hidden md:block absolute left-[21px] top-3 bottom-6 w-px bg-gradient-to-b from-cyan-500/40 via-blue-500/25 to-purple-500/10" />
 
-          <div className="md:ml-0">
+          <div>
             {experiences.map((exp, i) => (
               <ExperienceCard key={exp.id} exp={exp} index={i} isInView={isInView} />
             ))}
           </div>
         </div>
 
-        {/* Bottom badge */}
+        {/* Open to roles — full-width CTA banner */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8 }}
-          className="mt-4 flex items-center gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] w-fit"
+          className="mt-6 w-full relative overflow-hidden rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/[0.07] via-blue-600/[0.07] to-purple-600/[0.07] p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 group cursor-default"
         >
-          <FiBriefcase className="text-cyan-400" size={18} />
-          <p className="text-sm text-slate-400">
-            <span className="text-white font-medium">Open to new roles.</span>{" "}
-            Let's build something great together.
-          </p>
+          {/* Subtle animated glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/[0.04] to-purple-600/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          <div className="relative flex items-center gap-5">
+            <div className="p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex-shrink-0">
+              <FiBriefcase className="text-cyan-400" size={24} />
+            </div>
+            <div>
+              <p className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+                Open to new roles.
+              </p>
+              <p className="text-sm sm:text-base text-slate-400 mt-1">
+                Let's build something{" "}
+                <span className="text-cyan-400 font-semibold">great</span> together.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative flex items-center gap-3 flex-shrink-0">
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-xs font-semibold text-cyan-400 tracking-[0.15em] uppercase">
+              Available Now
+            </span>
+          </div>
         </motion.div>
       </div>
     </section>
