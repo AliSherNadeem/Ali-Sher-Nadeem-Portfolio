@@ -107,7 +107,7 @@ const About = () => {
                 <p className="text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   {value}
                 </p>
-                <p className="text-xs text-slate-500 mt-2 leading-snug whitespace-pre-line">
+                <p className="text-sm text-slate-400 mt-2 leading-snug whitespace-pre-line font-medium">
                   {label}
                 </p>
               </motion.div>
