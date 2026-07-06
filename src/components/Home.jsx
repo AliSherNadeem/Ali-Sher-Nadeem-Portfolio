@@ -54,14 +54,12 @@ const Home = () => {
 
             <motion.h1
               variants={fadeUp}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-extrabold leading-[1.06] text-white tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-extrabold leading-[1.06] tracking-tight"
             >
-              Hi, I'm{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
-                Ali Sher
+                Ali Sher{" "}
               </span>
-              <br />
-              Nadeem
+              <span className="text-white">Nadeem</span>
             </motion.h1>
 
             <motion.p
@@ -76,7 +74,7 @@ const Home = () => {
               className="mt-5 text-slate-500 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto md:mx-0"
             >
               2+ years building fast, scalable, and interactive web applications.
-              Proficient in React.js, Next.js, Node.js, PostgreSQL & MongoDB.
+              Proficient in React.js, Next.js, TypeScript, Tailwind CSS, Node.js, PostgreSQL & MongoDB.
             </motion.p>
 
             <motion.div
@@ -130,6 +128,15 @@ const Home = () => {
               <div className="absolute inset-0 rounded-full border border-cyan-400/15 animate-spin-slow" />
               <div className="absolute inset-3 rounded-full border border-blue-500/12 animate-spin-reverse" />
               <div className="absolute inset-6 rounded-full border border-purple-500/10" style={{ animation: "spin 7s linear infinite" }} />
+
+              {/* Single orbiting dot on the outer ring */}
+              <motion.div
+                className="absolute inset-0"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-400 blur-[2px] shadow-[0_0_8px_4px_rgba(34,211,238,0.55)]" />
+              </motion.div>
 
               {/* Glow */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/20 via-blue-600/15 to-purple-600/15 blur-2xl" />
