@@ -73,8 +73,9 @@ const Home = () => {
               variants={fadeUp}
               className="mt-5 text-slate-500 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto md:mx-0"
             >
-              2+ years building fast, scalable, and interactive web applications.
-              Proficient in React.js, Next.js, TypeScript, Tailwind CSS, Node.js, PostgreSQL & MongoDB.
+              Over 2 years of professional experience delivering scalable, high-performance
+              web applications across the full stack with React.js, Next.js, TypeScript,
+              Tailwind CSS, Node.js, PostgreSQL and MongoDB.
             </motion.p>
 
             <motion.div
@@ -162,22 +163,27 @@ const Home = () => {
       {/* Scroll indicator */}
       <Link to="about" smooth duration={500}>
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+          transition={{ delay: 2.2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group"
         >
-          <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-slate-600 group-hover:text-cyan-400/70 transition-colors duration-300">
+          <span className="text-[11px] tracking-[0.28em] uppercase font-bold text-slate-500 group-hover:text-cyan-400 transition-colors duration-300">
             Scroll
           </span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-cyan-500/20 bg-cyan-500/[0.05] group-hover:border-cyan-500/50 group-hover:bg-cyan-500/[0.12] transition-all duration-300"
-            style={{ boxShadow: "0 0 18px 0 rgba(34,211,238,0.08)" }}
-          >
-            <HiChevronDown size={18} className="text-cyan-400/60 group-hover:text-cyan-400 transition-colors duration-300" />
-          </motion.div>
+
+          {/* Outer pulse ring */}
+          <div className="relative flex items-center justify-center">
+            <span className="absolute w-14 h-14 rounded-full border border-cyan-400/20 animate-ping" style={{ animationDuration: "2s" }} />
+            <motion.div
+              animate={{ y: [0, 7, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative flex items-center justify-center w-11 h-11 rounded-full border border-cyan-500/40 bg-cyan-500/[0.08] group-hover:border-cyan-400/70 group-hover:bg-cyan-500/[0.18] transition-all duration-300"
+              style={{ boxShadow: "0 0 22px 2px rgba(34,211,238,0.18), inset 0 0 12px 0 rgba(34,211,238,0.06)" }}
+            >
+              <HiChevronDown size={20} className="text-cyan-400/80 group-hover:text-cyan-300 transition-colors duration-300" />
+            </motion.div>
+          </div>
         </motion.div>
       </Link>
     </section>
