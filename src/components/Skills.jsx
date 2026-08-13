@@ -4,9 +4,10 @@ import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript,
   SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress,
   SiPostgresql, SiMongodb, SiGit, SiGithub,
-  SiPostman, SiJira, SiVercel,
+  SiPostman, SiJira, SiVercel, SiPython, SiFastapi,
+  SiOpenai, SiMapbox, SiAmazonaws, SiMeta, SiGoogleads,
 } from "react-icons/si";
-import { FiLayout, FiLayers, FiDatabase, FiCloud } from "react-icons/fi";
+import { FiLayout, FiLayers, FiDatabase, FiCloud, FiCpu, FiTool, FiBox, FiMap, FiServer, FiGlobe } from "react-icons/fi";
 import BgParticles from "./BgParticles";
 
 const categories = [
@@ -33,8 +34,35 @@ const categories = [
     skills: [
       { name: "Node.js",     icon: SiNodedotjs,  color: "#339933" },
       { name: "Express.js",  icon: SiExpress,    color: "#e2e8f0" },
+      { name: "Python",      icon: SiPython,     color: "#3776AB" },
+      { name: "FastAPI",     icon: SiFastapi,    color: "#009688" },
       { name: "PostgreSQL",  icon: SiPostgresql, color: "#4169E1" },
       { name: "MongoDB",     icon: SiMongodb,    color: "#47A248" },
+    ],
+  },
+  {
+    label: "AI & Automation",
+    color: "purple",
+    gridColor: "168,85,247",
+    skills: [
+      { name: "OpenAI",       icon: SiOpenai,  color: "#e2e8f0" },
+      { name: "AI Agents",    icon: FiCpu,     color: "#a855f7" },
+      { name: "Tool Calling", icon: FiTool,    color: "#c084fc" },
+      { name: "Ollama",       icon: FiBox,     color: "#d8b4fe" },
+    ],
+  },
+  {
+    label: "Geospatial & Integrations",
+    color: "cyan",
+    gridColor: "34,211,238",
+    skills: [
+      { name: "PostGIS",         icon: FiMap,       color: "#4169E1" },
+      { name: "GeoServer",       icon: FiServer,    color: "#34d399" },
+      { name: "Mapbox GL",       icon: SiMapbox,    color: "#e2e8f0" },
+      { name: "CesiumJS",        icon: FiGlobe,     color: "#22d3ee" },
+      { name: "Meta Ads API",    icon: SiMeta,      color: "#0866FF" },
+      { name: "Google Ads API",  icon: SiGoogleads, color: "#FBBC04" },
+      { name: "AWS S3",          icon: SiAmazonaws, color: "#FF9900" },
     ],
   },
   {
@@ -87,7 +115,7 @@ const SkillCard = ({ skill, delay, isInView }) => {
         color={skill.color}
         style={{ filter: `drop-shadow(0 0 10px ${skill.color}70)` }}
       />
-      <span className="text-xs text-slate-500 group-hover:text-slate-200 transition-colors duration-200 text-center font-medium leading-tight">
+      <span className="text-xs text-slate-300 group-hover:text-white transition-colors duration-200 text-center font-medium leading-tight">
         {skill.name}
       </span>
     </motion.div>
@@ -127,7 +155,7 @@ const Skills = () => {
               Skills
             </span>
           </h2>
-          <p className="mt-3 text-slate-500 text-base sm:text-lg max-w-xl">
+          <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-xl">
             Technologies and tools I use to build full-stack web applications.
           </p>
         </motion.div>
@@ -174,7 +202,7 @@ const Skills = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.9 }}
-          className="mt-8 text-center text-xs text-slate-700"
+          className="mt-8 text-center text-xs text-slate-500"
         >
           Always learning and adding new tools to the stack.
         </motion.p>

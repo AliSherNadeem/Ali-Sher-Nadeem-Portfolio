@@ -71,11 +71,13 @@ const Home = () => {
 
             <motion.p
               variants={fadeUp}
-              className="mt-5 text-slate-500 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto md:mx-0"
+              className="mt-5 text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto md:mx-0"
             >
-              Over 2 years of professional experience delivering scalable, high-performance
-              web applications across the full stack with React.js, Next.js, TypeScript,
-              Tailwind CSS, Node.js, PostgreSQL and MongoDB.
+              Over 3 years of professional experience building fast, scalable web
+              applications across SaaS, geospatial (GIS), and AI-integrated products.
+              I work across React.js, Next.js, Node.js, and PostgreSQL with PostGIS,
+              with hands-on experience integrating third-party APIs like Meta and
+              Google Ads, and AI features using OpenAI.
             </motion.p>
 
             <motion.div
@@ -83,12 +85,12 @@ const Home = () => {
               className="flex flex-wrap gap-3 mt-9 justify-center md:justify-start"
             >
               <Link
-                to="portfolio"
+                to="projects"
                 smooth
                 duration={500}
                 className="group inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-bold rounded-xl cursor-pointer hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-[1.03] transition-all duration-250 tracking-wide"
               >
-                View Portfolio
+                View Projects
                 <MdArrowForward
                   size={18}
                   className="group-hover:translate-x-1 transition-transform duration-200"
@@ -106,10 +108,10 @@ const Home = () => {
 
             {/* Tech chips */}
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2 justify-center md:justify-start">
-              {["React.js", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "MongoDB"].map((t) => (
+              {["React.js", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "OpenAI", "PostGIS"].map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-500 hover:text-slate-300 hover:border-white/[0.14] transition-colors duration-200 cursor-default"
+                  className="px-3 py-1 text-xs font-medium rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-300 hover:text-white hover:border-white/[0.14] transition-colors duration-200 cursor-default"
                 >
                   {t}
                 </span>
@@ -168,7 +170,7 @@ const Home = () => {
           transition={{ delay: 2.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group"
         >
-          <span className="text-[11px] tracking-[0.28em] uppercase font-bold text-slate-500 group-hover:text-cyan-400 transition-colors duration-300">
+          <span className="text-[11px] tracking-[0.28em] uppercase font-bold text-slate-400 group-hover:text-cyan-400 transition-colors duration-300">
             Scroll
           </span>
 
