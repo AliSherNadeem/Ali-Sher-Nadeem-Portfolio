@@ -12,6 +12,10 @@ import DligLogin from "../assets/portfolio/dlig-login.png";
 import DligDashboard from "../assets/portfolio/digital-library-dashboard.png";
 import DligCatalogue from "../assets/portfolio/digital-library-catalogue.png";
 import DligDocumentViewer from "../assets/portfolio/digital-library-document-viewer.png";
+import BlueprintLogin from "../assets/portfolio/blueprint-login.png";
+import BlueprintLegislation from "../assets/portfolio/legislation-blueprint.png";
+import ToetsTesterMarketing from "../assets/portfolio/ToetsTester.png";
+import ToetsTesterGrade from "../assets/portfolio/ToetsTester-grade.png";
 import Revetment from "../assets/portfolio/Revetment.png";
 
 const projects = [
@@ -35,8 +39,8 @@ const projects = [
     title: "Blueprint",
     company: "Independent / Freelance",
     link: "https://blueprint.build",
-    gradient: "from-emerald-600/30 via-teal-600/20 to-cyan-600/10",
-    hasImage: false,
+    hasImage: true,
+    images: [BlueprintLogin, BlueprintLegislation],
     tech: ["React", "Node.js", "Express.js", "PostgreSQL", "PostGIS", "CesiumJS", "GeoServer"],
     color: "cyan",
     details: [
@@ -95,8 +99,8 @@ const projects = [
     title: "ToetsTester",
     company: "Converge Logics",
     link: "https://toetstester.nl/en/",
-    gradient: "from-cyan-600/30 via-blue-600/20 to-purple-600/10",
-    hasImage: false,
+    hasImage: true,
+    images: [ToetsTesterMarketing, ToetsTesterGrade],
     tech: ["Next.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS", "REST APIs"],
     color: "cyan",
     details: [
@@ -294,15 +298,15 @@ const Portfolio = () => {
               exit={{ opacity: 0, scale: 0.92, y: 24 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl rounded-2xl bg-[#0a0a1a] border border-white/[0.1] overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-4xl rounded-2xl bg-[#0a0a1a] border border-white/[0.1] overflow-hidden shadow-2xl max-h-[92vh] overflow-y-auto"
             >
-              {/* Image */}
-              <div className="relative w-full h-56 bg-[#080820]">
+              {/* Image — object-contain so the full screenshot is always visible, never cropped */}
+              <div className="relative w-full h-[280px] sm:h-[420px] md:h-[480px] bg-[#080820] flex items-center justify-center">
                 {selected.hasImage ? (
                   <img
                     src={selected.images[activeImage]}
                     alt={`${selected.title} screenshot ${activeImage + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 ) : (
                   <div className={`w-full h-full bg-gradient-to-br ${selected.gradient} flex items-center justify-center`}>
@@ -315,17 +319,17 @@ const Portfolio = () => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors duration-200 cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors duration-200 cursor-pointer"
                       aria-label="Previous image"
                     >
-                      <FiChevronLeft size={16} />
+                      <FiChevronLeft size={19} />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors duration-200 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors duration-200 cursor-pointer"
                       aria-label="Next image"
                     >
-                      <FiChevronRight size={16} />
+                      <FiChevronRight size={19} />
                     </button>
                     {/* Dots */}
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
@@ -379,10 +383,10 @@ const Portfolio = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border ${colorMap[selected.color].badge} hover:brightness-125 transition-all duration-200 cursor-pointer`}
+                      className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.04] transition-all duration-200 cursor-pointer"
                     >
-                      <FiExternalLink size={12} />
-                      Live Site
+                      <FiExternalLink size={16} />
+                      Visit Live Site
                     </a>
                   )}
                 </div>
@@ -409,12 +413,25 @@ const Portfolio = () => {
                   ))}
                 </ul>
 
-                <button
-                  onClick={closeModal}
-                  className="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.01] transition-all duration-200 cursor-pointer"
-                >
-                  Close
-                </button>
+                <div className="mt-6 flex gap-3">
+                  {selected.link && (
+                    <a
+                      href={selected.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-bold hover:shadow-lg hover:shadow-cyan-500/25 hover:scale-[1.01] transition-all duration-200 cursor-pointer"
+                    >
+                      <FiExternalLink size={16} />
+                      Visit Live Site
+                    </a>
+                  )}
+                  <button
+                    onClick={closeModal}
+                    className={`${selected.link ? "flex-shrink-0 px-6" : "flex-1"} py-3.5 rounded-xl border border-white/[0.1] bg-white/[0.03] text-slate-300 text-sm font-semibold hover:bg-white/[0.07] hover:text-white transition-all duration-200 cursor-pointer`}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </motion.div>
           </motion.div>
