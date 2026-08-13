@@ -183,8 +183,8 @@ const ProjectCard = ({ project, onClick, index, isInView }) => {
             <FiMaximize2 className="text-white" size={18} />
           </div>
         </div>
-        {/* Company badge */}
-        <span className={`absolute top-3 right-3 px-2.5 py-1 text-[10px] font-semibold rounded-full border ${c.badge} backdrop-blur-sm`}>
+        {/* Company badge — solid dark backing so it stays readable over any screenshot */}
+        <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-semibold rounded-full bg-black/75 border border-white/15 text-white backdrop-blur-sm">
           {project.company}
         </span>
       </div>
@@ -198,13 +198,13 @@ const ProjectCard = ({ project, onClick, index, isInView }) => {
           {project.tech.slice(0, 4).map((t) => (
             <span
               key={t}
-              className="px-2 py-0.5 text-[10px] rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-500"
+              className="px-2 py-0.5 text-[10px] rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-300"
             >
               {t}
             </span>
           ))}
           {project.tech.length > 4 && (
-            <span className="px-2 py-0.5 text-[10px] rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-600">
+            <span className="px-2 py-0.5 text-[10px] rounded-full bg-white/[0.04] border border-white/[0.07] text-slate-400">
               +{project.tech.length - 4}
             </span>
           )}
@@ -235,7 +235,7 @@ const Portfolio = () => {
 
   return (
     <section
-      name="portfolio"
+      name="projects"
       className="relative w-full bg-gradient-to-b from-[#050510] to-[#070716] text-white pt-16 overflow-hidden"
     >
       {/* Shared animated background */}
@@ -259,10 +259,10 @@ const Portfolio = () => {
           <h2 className="text-4xl sm:text-5xl font-extrabold mt-2 tracking-tight">
             My{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Portfolio
+              Projects
             </span>
           </h2>
-          <p className="mt-3 text-slate-500 text-sm sm:text-base max-w-xl">
+          <p className="mt-3 text-slate-400 text-sm sm:text-base max-w-xl">
             A selection of projects built across different companies and stacks.
           </p>
         </motion.div>

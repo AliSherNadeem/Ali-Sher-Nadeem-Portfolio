@@ -13,11 +13,12 @@ const experiences = [
     type: "Full-time",
     color: "cyan",
     points: [
-      "Developing and maintaining full-stack web applications using Next.js, Node.js, Express.js, PostgreSQL, and Tailwind CSS.",
-      "Designing and implementing RESTful APIs and database schemas to support scalable product features.",
+      "Developing and maintaining full-stack web applications with Next.js, Node.js, Express.js, and PostgreSQL for client-facing products.",
+      "Building AI-powered features into the product, including OpenAI-driven content generation.",
+      "Designing and implementing RESTful APIs and database schemas across the backend to support scalable product features.",
       "Collaborating with cross-functional teams to deliver end-to-end solutions from UI design to backend integration.",
     ],
-    tech: ["Next.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS"],
+    tech: ["Next.js", "Node.js", "Express.js", "PostgreSQL", "OpenAI"],
   },
   {
     id: 2,
@@ -28,24 +29,26 @@ const experiences = [
     type: "Full-time",
     color: "blue",
     points: [
-      "Built fast, responsive, and scalable web applications using React.js, Next.js, TypeScript, Node.js, Express.js, and Tailwind CSS, boosting user engagement by 20%.",
-      "Integrated RESTful APIs to connect front-end interfaces with backend services, enabling real-time data updates and improving app functionality by 25%.",
-      "Ensured cross-browser compatibility achieving 95% consistency in user experience across Chrome, Firefox, and Edge.",
+      "Built fast, responsive web applications using React.js, Next.js, TypeScript, Node.js, and Express.js for several clients.",
+      "Worked across multiple SaaS products, including a geospatial business-intelligence platform used by real customers, and a digital library management system for a government client.",
+      "Integrated third-party APIs, including Meta and Google Ads, into existing product workflows, boosting feature delivery speed by 30%.",
+      "Ensured cross-browser compatibility, achieving 95% consistency across Chrome, Firefox, and Edge.",
     ],
-    tech: ["React.js", "Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
+    tech: ["React.js", "Next.js", "TypeScript", "Node.js", "PostGIS"],
   },
   {
     id: 3,
     title: "Front End Developer",
     company: "AKC Creations",
     location: "Remote",
-    duration: "July 2024 – November 2024",
+    duration: "March 2024 – November 2024",
     type: "Full-time",
     color: "purple",
     points: [
-      "Collaborated with a remote team to design and develop responsive, scalable, and user-friendly web interfaces using React.js and Next.js.",
+      "Collaborated with a remote team to design responsive, scalable web interfaces using React.js and Next.js.",
+      "Built role-specific dashboards for different user types using the Next.js App Router.",
       "Developed interactive UIs delivering seamless user experiences with 20% faster load times.",
-      "Utilized Git for efficient code management and team collaboration, meeting 90% of project deadlines ahead of schedule.",
+      "Utilized Git for efficient code management and team collaboration, meeting 90% of deadlines ahead of schedule.",
     ],
     tech: ["React.js", "Next.js", "Tailwind CSS", "Git"],
   },
@@ -113,7 +116,7 @@ const ExperienceCard = ({ exp, index, isInView }) => {
             <h3 className={`text-base sm:text-lg font-bold ${c.title}`}>{exp.title}</h3>
             <p className="text-slate-300 font-medium text-sm mt-0.5">
               {exp.company}
-              <span className="text-slate-600 font-normal"> · {exp.location}</span>
+              <span className="text-slate-400 font-normal"> · {exp.location}</span>
             </p>
           </div>
           <span
