@@ -1,95 +1,122 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { FiX, FiExternalLink, FiMaximize2 } from "react-icons/fi";
+import { FiX, FiExternalLink, FiMaximize2, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import BgParticles from "./BgParticles";
-import DLIG from "../assets/portfolio/DLIG Project.png";
-import Revetment from "../assets/portfolio/Revetment.png";
-import AutoMojo from "../assets/portfolio/AutoMojo.png";
-import TradeBreakout from "../assets/portfolio/Trade Breakout.png";
 import Alignography from "../assets/portfolio/Alignography.png";
+import AutoMojoLogin from "../assets/portfolio/automojo-login.png";
+import AutoMojoMarketing from "../assets/portfolio/AutoMojo.png";
+import AutoMojoEstimate from "../assets/portfolio/automojo-estimate.jpg";
+import QvTrainingDashboard from "../assets/portfolio/qv-training-dashboard.png";
+import QvTrainingNutrition from "../assets/portfolio/qv-training-nutrition.png";
+import DligLogin from "../assets/portfolio/dlig-login.png";
+import DligDashboard from "../assets/portfolio/digital-library-dashboard.png";
+import DligCatalogue from "../assets/portfolio/digital-library-catalogue.png";
+import DligDocumentViewer from "../assets/portfolio/digital-library-document-viewer.png";
+import Revetment from "../assets/portfolio/Revetment.png";
 
 const projects = [
   {
     id: 1,
+    title: "Alignography",
+    company: "Metavystic",
+    link: "https://alignography.com",
+    hasImage: true,
+    images: [Alignography],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Mantine UI", "Zustand", "React Query", "Mapbox GL"],
+    color: "blue",
+    details: [
+      "Built the front-end for a multi-tenant, geospatial business-intelligence SaaS platform used by retail and financial clients to analyze customer data and plan location-based business expansion.",
+      "Integrated the Meta (Facebook) Ads API and Google Ads API directly into the product for campaign management and reach estimation, along with an AI-powered business assistant.",
+      "Used Zustand and React Query across a large dashboard with map-based analytics and GDPR-compliant workflows, cutting data-related bugs by 40%.",
+    ],
+  },
+  {
+    id: 2,
+    title: "Blueprint",
+    company: "Independent / Freelance",
+    link: "https://blueprint.build",
+    gradient: "from-emerald-600/30 via-teal-600/20 to-cyan-600/10",
+    hasImage: false,
+    tech: ["React", "Node.js", "Express.js", "PostgreSQL", "PostGIS", "CesiumJS", "GeoServer"],
+    color: "cyan",
+    details: [
+      "Built the backend (Node.js, Express, PostgreSQL, PostGIS) for a 3D GIS platform used for municipal zoning and compliance, including a map-editing tool where every change is reviewed and approved before it goes live.",
+      "Built a version-controlled system for zoning rules, similar to how developers track changes in code, so municipal staff can draft and review legislation updates before publishing.",
+      "Built key features on a 3D map interface, including approvals, a file manager, and a data-migration tool, and connected a self-hosted map server (GeoServer) with AWS S3 for file storage.",
+    ],
+  },
+  {
+    id: 3,
+    title: "QV Training",
+    company: "Converge Logics",
+    link: "https://app.qv-training.com",
+    hasImage: true,
+    images: [QvTrainingDashboard, QvTrainingNutrition],
+    tech: ["React", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "OpenAI API"],
+    color: "purple",
+    details: [
+      "Built a full-stack AI fitness coaching platform (React, Node.js, Express, MongoDB) on my own, end to end, from database design to the user interface.",
+      "Used OpenAI to auto-generate personalized training and nutrition plans, with server-side checks that recalculate the numbers and reject any plan that looks wrong before it reaches users.",
+      "Built secure OTP-based login with time-limited reset codes and a gamified habit-tracking system with daily streaks.",
+    ],
+  },
+  {
+    id: 4,
+    title: "Digital Library and Information Gateway",
+    company: "Metavystic",
+    link: "https://dlig.pnd.balochistan.gov.pk",
+    hasImage: true,
+    images: [DligLogin, DligDashboard, DligCatalogue, DligDocumentViewer],
+    tech: ["React.js", "JavaScript", "Node.js", "Express.js", "PostgreSQL", "Mantine UI"],
+    color: "cyan",
+    details: [
+      "Built a document and publication management platform for the Government of Balochistan's planning department.",
+      "The platform has 3 user roles, superadmin, department manager, and user, each with its own dashboard.",
+      "Built file upload for Word, Excel, PowerPoint, and video files, with filters by department, category, and file type, and improved page navigation, increasing efficiency by 25%.",
+    ],
+  },
+  {
+    id: 5,
+    title: "AutoMojo",
+    company: "AKC Creations",
+    link: "https://automojo.io",
+    hasImage: true,
+    images: [AutoMojoLogin, AutoMojoMarketing, AutoMojoEstimate],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI", "Redux Toolkit"],
+    color: "purple",
+    details: [
+      "Built a shop-management platform for vehicle-upgrade shops, including car audio, window tint, and off-road shops, with a role-based admin and user dashboard split built with the Next.js App Router.",
+      "Built the estimate and invoice builder, with line-item editing, discounts, and client-side PDF generation, plus a full inventory and purchase-order system with vendor tracking.",
+      "Built a public payment page that works without a login, plus a reusable data table used across the platform. The live product also includes automated follow-ups, review requests, and ad-spend tracking for shop owners.",
+    ],
+  },
+  {
+    id: 6,
     title: "ToetsTester",
     company: "Converge Logics",
+    link: "https://toetstester.nl/en/",
     gradient: "from-cyan-600/30 via-blue-600/20 to-purple-600/10",
     hasImage: false,
     tech: ["Next.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS", "REST APIs"],
     color: "cyan",
     details: [
-      "Building a full-stack online platform enabling teachers to check and grade exams quickly, with automated workflows that reduce grading time significantly.",
-      "Designing a structured record management system allowing teachers to maintain, filter, and retrieve student exam records efficiently.",
-      "Implementing a robust PostgreSQL database schema and RESTful APIs to support multi-user access, data integrity, and scalable record storage.",
+      "Building a full-stack platform that uses AI to automatically grade handwritten and digital student tests, saving teachers hours of manual grading each week.",
+      "Building batch grading for a whole class at once, with score compilation and feedback generation, plus manual review so teachers can adjust any result.",
+      "Implementing a PostgreSQL database schema and RESTful APIs supporting multi-user access, data integrity, and scalable record storage.",
     ],
   },
   {
-    id: 2,
-    title: "Alignography",
-    company: "Metavystic",
-    src: Alignography,
-    hasImage: true,
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Mantine UI", "Zustand", "REST APIs"],
-    color: "blue",
-    details: [
-      "Developed a scalable front-end accelerating development time by 25% using Next.js, TypeScript, Tailwind CSS, and Mantine UI.",
-      "Integrated APIs to enable seamless scheduling, data management, and user interactions, boosting feature delivery speed by 30%.",
-      "Implemented Zustand for efficient state management, reducing data-related bugs by 40% and improving overall performance.",
-    ],
-  },
-  {
-    id: 3,
-    title: "AutoMojo",
-    company: "AKC Creations",
-    src: AutoMojo,
-    hasImage: true,
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI", "REST APIs"],
-    color: "purple",
-    details: [
-      "Built a responsive front-end with Next.js, TypeScript, Tailwind CSS, and ShadCN, outperforming competitors like Shopmonkey by 30% in speed.",
-      "Designed intuitive dashboards and workflows for shop owners, cutting task completion time by 20% based on user feedback.",
-      "Integrated APIs to enable features like scheduling, inventory management, and real-time tracking.",
-    ],
-  },
-  {
-    id: 4,
-    title: "Digital Library & Information Gateway",
-    company: "Metavystic",
-    src: DLIG,
-    hasImage: true,
-    tech: ["React.js", "JavaScript", "Mantine UI", "Tailwind CSS"],
-    color: "cyan",
-    details: [
-      "Built a responsive front-end with modules including admin dashboard, user management, and department management, improving navigation efficiency by 25%.",
-      "Optimized UI components for seamless performance, reducing user-reported issues by 15%.",
-    ],
-  },
-  {
-    id: 5,
+    id: 7,
     title: "Revetment",
     company: "Metavystic",
-    src: Revetment,
     hasImage: true,
+    images: [Revetment],
     tech: ["Next.js", "JavaScript", "Tailwind CSS", "Mantine UI"],
     color: "blue",
     details: [
-      "Enhanced the UI using Next.js, JavaScript, Tailwind CSS, and Mantine UI, boosting responsiveness across devices.",
+      "Enhanced the UI using Next.js, Tailwind CSS, and Mantine UI, boosting responsiveness across devices.",
       "Upgraded existing features to improve performance, reducing user load times by 25% on average.",
-      "Optimized data management workflows, cutting processing times by 20% for improved overall efficiency.",
-    ],
-  },
-  {
-    id: 6,
-    title: "Trade Breakout",
-    company: "AKC Creations",
-    src: TradeBreakout,
-    hasImage: true,
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI", "Charts"],
-    color: "purple",
-    details: [
-      "Developed a real-time market analysis platform with 30% faster load times using Next.js, TypeScript, and ShadCN.",
-      "Integrated advanced search and filters enabling users to pinpoint breakout opportunities with 95% accuracy.",
-      "Built stock detail modules with interactive graphs and charts, enhancing data clarity by 30%.",
+      "Optimized data-management workflows, cutting processing times by 20% for improved overall efficiency.",
     ],
   },
 ];
@@ -136,7 +163,7 @@ const ProjectCard = ({ project, onClick, index, isInView }) => {
       <div className="relative w-full h-44 overflow-hidden bg-[#080820]">
         {project.hasImage ? (
           <img
-            src={project.src}
+            src={project.images[0]}
             alt={project.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
@@ -190,11 +217,21 @@ const ProjectCard = ({ project, onClick, index, isInView }) => {
 const Portfolio = () => {
   const [selected, setSelected] = useState(null);
   const [fullImage, setFullImage] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
-  const openModal = (p) => { setSelected(p); setFullImage(false); };
+  const openModal = (p) => { setSelected(p); setFullImage(false); setActiveImage(0); };
   const closeModal = () => { setSelected(null); setFullImage(false); };
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setActiveImage((i) => (i + 1) % selected.images.length);
+  };
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setActiveImage((i) => (i - 1 + selected.images.length) % selected.images.length);
+  };
 
   return (
     <section
@@ -263,8 +300,8 @@ const Portfolio = () => {
               <div className="relative w-full h-56 bg-[#080820]">
                 {selected.hasImage ? (
                   <img
-                    src={selected.src}
-                    alt={selected.title}
+                    src={selected.images[activeImage]}
+                    alt={`${selected.title} screenshot ${activeImage + 1}`}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -272,13 +309,47 @@ const Portfolio = () => {
                     <span className="text-white/20 text-6xl font-bold">{selected.title.charAt(0)}</span>
                   </div>
                 )}
+
+                {/* Prev/next arrows, only if there's more than one image */}
+                {selected.hasImage && selected.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors duration-200 cursor-pointer"
+                      aria-label="Previous image"
+                    >
+                      <FiChevronLeft size={16} />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors duration-200 cursor-pointer"
+                      aria-label="Next image"
+                    >
+                      <FiChevronRight size={16} />
+                    </button>
+                    {/* Dots */}
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                      {selected.images.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={(e) => { e.stopPropagation(); setActiveImage(i); }}
+                          className={`w-1.5 h-1.5 rounded-full transition-all duration-200 cursor-pointer ${
+                            i === activeImage ? "bg-white w-4" : "bg-white/40"
+                          }`}
+                          aria-label={`Go to image ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+
                 {selected.hasImage && (
                   <button
                     onClick={() => setFullImage(true)}
-                    className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 bg-black/60 backdrop-blur-sm border border-white/10 text-white text-xs rounded-lg hover:bg-black/80 transition-colors duration-200 cursor-pointer"
+                    className="absolute top-3 right-12 flex items-center gap-1.5 px-3 py-1.5 bg-black/60 backdrop-blur-sm border border-white/10 text-white text-xs rounded-lg hover:bg-black/80 transition-colors duration-200 cursor-pointer"
                     aria-label="View full image"
                   >
-                    <FiExternalLink size={13} />
+                    <FiMaximize2 size={13} />
                     Full Image
                   </button>
                 )}
@@ -293,12 +364,28 @@ const Portfolio = () => {
 
               {/* Body */}
               <div className="p-6">
-                <h3 className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${colorMap[selected.color].modalTitle} bg-clip-text text-transparent`}>
-                  {selected.title}
-                </h3>
-                <p className="text-slate-400 text-sm mt-1">
-                  <span className="font-semibold text-slate-300">{selected.company}</span>
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${colorMap[selected.color].modalTitle} bg-clip-text text-transparent`}>
+                      {selected.title}
+                    </h3>
+                    <p className="text-slate-400 text-sm mt-1">
+                      <span className="font-semibold text-slate-300">{selected.company}</span>
+                    </p>
+                  </div>
+                  {selected.link && (
+                    <a
+                      href={selected.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border ${colorMap[selected.color].badge} hover:brightness-125 transition-all duration-200 cursor-pointer`}
+                    >
+                      <FiExternalLink size={12} />
+                      Live Site
+                    </a>
+                  )}
+                </div>
 
                 {/* Tech stack */}
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -350,7 +437,7 @@ const Portfolio = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              src={selected.src}
+              src={selected.images[activeImage]}
               alt={selected.title}
               className="max-w-[92%] max-h-[90vh] object-contain rounded-xl shadow-2xl"
             />
