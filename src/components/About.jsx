@@ -4,7 +4,7 @@ import { HiAcademicCap } from "react-icons/hi";
 import BgParticles from "./BgParticles";
 
 const stats = [
-  { value: "2+",  label: "Years\nExperience" },
+  { value: "3+",  label: "Years\nExperience" },
   { value: "20+", label: "Projects\nDelivered" },
   { value: "15+", label: "Technologies\nUsed" },
   { value: "3",   label: "Companies\nWorked" },
@@ -59,15 +59,17 @@ const About = () => {
             <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
               I'm a{" "}
               <span className="text-cyan-400 font-semibold">Full Stack Developer</span>{" "}
-              with 2+ years of experience building fast, scalable, and interactive
-              web applications. I specialize in crafting seamless user experiences
-              across the full stack — from pixel-perfect UIs to robust backends.
+              with 3+ years of experience building fast, scalable web applications
+              across SaaS, geospatial (GIS), and AI-integrated products, the kind that
+              hold up under real users and real data, not just demos.
             </p>
             <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
-              My expertise spans React.js, Next.js, TypeScript on the frontend and
-              Node.js, Express.js, PostgreSQL, MongoDB on the backend. I'm passionate
-              about clean, maintainable code and love contributing to impactful products
-              that make a real difference.
+              I work across React.js, Next.js, TypeScript on the frontend and Node.js,
+              Express.js, PostgreSQL (including PostGIS), and MongoDB on the backend.
+              I've also integrated third-party APIs like Meta and Google Ads, and
+              AI/LLM features using OpenAI, directly into production applications.
+              I care about clean, maintainable code and products that actually work
+              for the people using them.
             </p>
 
             {/* Education */}
@@ -82,7 +84,7 @@ const About = () => {
               </div>
               <div>
                 <p className="text-sm font-bold text-slate-200">B.S. in Software Engineering</p>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-slate-400 mt-0.5">
                   PMAS Arid Agriculture University, Rawalpindi, Pakistan
                 </p>
               </div>
@@ -123,9 +125,9 @@ const About = () => {
           className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-cyan-500/[0.06] to-blue-600/[0.06] border border-cyan-500/[0.12]"
         >
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-center">
-            <span className="text-cyan-400 font-bold">Eager to contribute</span>{" "}
-            to innovative and impactful products by leveraging expertise in modern
-            full-stack web technologies — from idea to deployment.
+            <span className="text-cyan-400 font-bold">Looking for my next role</span>{" "}
+            where I can take a product from idea to a working, reliable deployment,
+            not just build screens.
           </p>
         </motion.div>
       </div>

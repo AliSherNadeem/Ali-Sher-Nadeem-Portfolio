@@ -72,7 +72,7 @@ const Contact = () => {
               Connect
             </span>
           </h2>
-          <p className="mt-3 text-slate-500 text-sm sm:text-base max-w-xl">
+          <p className="mt-3 text-slate-400 text-sm sm:text-base max-w-xl">
             Have a project in mind or just want to say hello? Drop me a message.
           </p>
         </motion.div>
@@ -103,7 +103,7 @@ const Contact = () => {
                     <Icon size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-600 uppercase tracking-wider">{label}</p>
+                    <p className="text-xs text-slate-400 uppercase tracking-wider">{label}</p>
                     {href ? (
                       <a
                         href={href}
@@ -121,7 +121,7 @@ const Contact = () => {
 
             {/* Socials */}
             <div className="pt-2">
-              <p className="text-xs text-slate-600 uppercase tracking-wider mb-3">
+              <p className="text-xs text-slate-400 uppercase tracking-wider mb-3">
                 Find me on
               </p>
               <div className="flex gap-3">
@@ -156,7 +156,7 @@ const Contact = () => {
               className="space-y-4 p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07]"
             >
               <div>
-                <label htmlFor="name" className="block text-xs text-slate-500 uppercase tracking-wider mb-1.5">
+                <label htmlFor="name" className="block text-xs text-slate-400 uppercase tracking-wider mb-1.5">
                   Name
                 </label>
                 <input
@@ -170,7 +170,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs text-slate-500 uppercase tracking-wider mb-1.5">
+                <label htmlFor="email" className="block text-xs text-slate-400 uppercase tracking-wider mb-1.5">
                   Email
                 </label>
                 <input
@@ -184,7 +184,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs text-slate-500 uppercase tracking-wider mb-1.5">
+                <label htmlFor="message" className="block text-xs text-slate-400 uppercase tracking-wider mb-1.5">
                   Message
                 </label>
                 <textarea
@@ -222,7 +222,7 @@ const Contact = () => {
             <span className="text-base font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-tight">
               Ali Sher Nadeem
             </span>
-            <span className="text-xs text-slate-600">Full Stack Developer · Islamabad, Pakistan</span>
+            <span className="text-xs text-slate-400">Full Stack Developer · Islamabad, Pakistan</span>
           </div>
 
           {/* Social row */}
