@@ -2,23 +2,24 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { FiX, FiExternalLink, FiMaximize2, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import BgParticles from "./BgParticles";
-import Alignography from "../assets/portfolio/Alignography.png";
+// import Alignography from "../assets/portfolio/Alignography.png"; // commented out for now
 import AutoMojoLogin from "../assets/portfolio/automojo-login.png";
 import AutoMojoMarketing from "../assets/portfolio/AutoMojo.png";
 import AutoMojoEstimate from "../assets/portfolio/automojo-estimate.jpg";
 import QvTrainingDashboard from "../assets/portfolio/qv-training-dashboard.png";
 import QvTrainingNutrition from "../assets/portfolio/qv-training-nutrition.png";
-import DligLogin from "../assets/portfolio/dlig-login.png";
-import DligDashboard from "../assets/portfolio/digital-library-dashboard.png";
-import DligCatalogue from "../assets/portfolio/digital-library-catalogue.png";
-import DligDocumentViewer from "../assets/portfolio/digital-library-document-viewer.png";
+// import DligLogin from "../assets/portfolio/dlig-login.png"; // commented out for now
+// import DligDashboard from "../assets/portfolio/digital-library-dashboard.png"; // commented out for now
+// import DligCatalogue from "../assets/portfolio/digital-library-catalogue.png"; // commented out for now
+// import DligDocumentViewer from "../assets/portfolio/digital-library-document-viewer.png"; // commented out for now
 import BlueprintLogin from "../assets/portfolio/blueprint-login.png";
 import BlueprintLegislation from "../assets/portfolio/legislation-blueprint.png";
 import ToetsTesterMarketing from "../assets/portfolio/ToetsTester.png";
 import ToetsTesterGrade from "../assets/portfolio/ToetsTester-grade.png";
-import Revetment from "../assets/portfolio/Revetment.png";
+// import Revetment from "../assets/portfolio/Revetment.png"; // commented out for now
 
 const projects = [
+  /* Commented out for now — Alignography
   {
     id: 1,
     title: "Alignography",
@@ -34,6 +35,7 @@ const projects = [
       "Used Zustand and React Query across a large dashboard with map-based analytics and GDPR-compliant workflows, cutting data-related bugs by 40%.",
     ],
   },
+  */
   {
     id: 2,
     title: "Blueprint",
@@ -64,6 +66,7 @@ const projects = [
       "Built secure OTP-based login with time-limited reset codes and a gamified habit-tracking system with daily streaks.",
     ],
   },
+  /* Commented out for now — Digital Library and Information Gateway
   {
     id: 4,
     title: "Digital Library and Information Gateway",
@@ -79,6 +82,7 @@ const projects = [
       "Built file upload for Word, Excel, PowerPoint, and video files, with filters by department, category, and file type, and improved page navigation, increasing efficiency by 25%.",
     ],
   },
+  */
   {
     id: 5,
     title: "AutoMojo",
@@ -109,6 +113,7 @@ const projects = [
       "Implementing a PostgreSQL database schema and RESTful APIs supporting multi-user access, data integrity, and scalable record storage.",
     ],
   },
+  /* Commented out for now — Revetment
   {
     id: 7,
     title: "Revetment",
@@ -123,6 +128,7 @@ const projects = [
       "Optimized data-management workflows, cutting processing times by 20% for improved overall efficiency.",
     ],
   },
+  */
 ];
 
 const colorMap = {
